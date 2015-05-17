@@ -1,4 +1,8 @@
 Django
-django-braces
 django-bootstrap3
+django-braces
 pybbm
+markdown
+Pillow
+python3-memcached
+sorl-thumbnail

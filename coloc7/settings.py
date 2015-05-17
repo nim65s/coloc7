@@ -8,37 +8,67 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+from os.path import dirname, join
 
+from pathlib import Path
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
+PROJECT = "coloc7"
+PROJECT_VERBOSE = "Portail web de la Coloc7"
+MAIL_USER = "majo"
+SELF_MAIL = True
+ALLOWED_HOSTS = ["coloc7.eu"]
+ALLOWED_HOSTS.append("www.%s" % ALLOWED_HOSTS[0])
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'mpy^@%!ix1debex@@qaw4%&egb=pkf1^*^!q9#&poj+*nrpf=y'
+BASE_DIR = dirname(dirname(__file__))
+CONF_DIR = Path("/etc/nim/" + PROJECT)
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if not CONF_DIR.is_dir():
+    CONF_DIR.mkdir(parents=True)
 
-TEMPLATE_DEBUG = True
+SECRET_KEY = (CONF_DIR / "secret_key.txt").open().read().strip()
 
-ALLOWED_HOSTS = []
+DEBUG, INTEGRATION, PROD = False, False, False
 
+if (CONF_DIR / "integration").is_file():
+    INTEGRATION = True
+elif (CONF_DIR / "prod").is_file():
+    PROD = True
+else:
+    DEBUG = True
 
-# Application definition
+EMAIL_SUBJECT_PREFIX = ("[%s Dev] " if DEBUG or INTEGRATION else "[%s] ") % PROJECT_VERBOSE
 
-INSTALLED_APPS = (
+EMAIL_USE_SSL = True
+EMAIL_HOST = "mail.gandi.net"  # TODO "smtp.%s" % (ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr") ← ça c’est pour ovh…
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "%s@%s" % (MAIL_USER, ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr")
+SERVER_EMAIL = "%s+%s@%s" % (MAIL_USER, PROJECT, ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr")
+DEFAULT_FROM_EMAIL = "%s <%s@%s>" % (PROJECT_VERBOSE, MAIL_USER, ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr")
+EMAIL_HOST_PASSWORD = (CONF_DIR / "email_password").open().read().strip()
+
+ADMINS = (
+        ("Guilhem Saurel", "guilhem+admin-%s@saurel.me" % PROJECT),
+        # TODO: on vous ajoute ici dès que tout tourne…
+        )
+MANAGERS = ADMINS
+TEMPLATE_DEBUG = DEBUG
+
+INSTALLED_APPS = [
+    PROJECT,
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.staticfiles',
-)
+    'pybb',
+    'bootstrap3',
+    'sorl.thumbnail',
+]
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -46,38 +76,79 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+]
 
-ROOT_URLCONF = 'coloc7.urls'
+TEMPLATE_CONTEXT_PROCESSORS = [
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+]
 
-WSGI_APPLICATION = 'coloc7.wsgi.application'
+ROOT_URLCONF = '%s.urls' % PROJECT
 
-
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+WSGI_APPLICATION = '%s.wsgi.application' % PROJECT
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': PROJECT,
+        'USER': PROJECT,
+        'PASSWORD': (CONF_DIR / 'db_password.txt').open().read().strip(),
+        'HOST': 'localhost',
     }
 }
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.7/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+LANGUAGE_CODE = 'fr-FR'
+TIME_ZONE = 'Europe/Paris'
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
+SITE_ID = 1
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
+MEDIA_ROOT = join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
+STATIC_ROOT = join(BASE_DIR, 'static_dest') if DEBUG else '/var/www/%s/static_dest' % PROJECT
+
+CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+            "LOCATION": "127.0.0.1:11211",
+            }
+        }
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "null": {
+            "level": "DEBUG",
+            "class": "logging.NullHandler",
+        },
+    },
+    "loggers": {
+        "django.security.DisallowedHost": {
+            "handlers": ["null"],
+            "propagate": False,
+        },
+    },
+}
+
+if (Path(BASE_DIR) / PROJECT / 'context_processors.py').is_file():
+    TEMPLATE_CONTEXT_PROCESSORS.append('%s.context_processors.%s' % (PROJECT, PROJECT))
+
+if not DEBUG:
+    INSTALLED_APPS.append('raven.contrib.django.raven_compat')
+    RAVEN_CONFIG = {"dsn": (CONF_DIR / "raven").open().read().strip()}
+
+if 'pybb' in INSTALLED_APPS:
+    PYBB_MARKUP = 'markdown'
+    TEMPLATE_CONTEXT_PROCESSORS.append('pybb.context_processors.processor')
+    MIDDLEWARE_CLASSES.append('pybb.middleware.PybbMiddleware')
+    PYBB_DEFAULT_TITLE = "Forum de la Coloc7"
