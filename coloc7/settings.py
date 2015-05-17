@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'pybb',
     'bootstrap3',
     'sorl.thumbnail',
+    'comptes',
 ]
 
 MIDDLEWARE_CLASSES = [
