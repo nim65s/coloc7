@@ -1,6 +1,26 @@
 server {
     listen 80;
+    server_name coloc7.eu www.coloc7.eu;
+    return 301 https://coloc7.eu$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name www.coloc7.eu;
+
+    ssl_certificate     ssl/coloc7.eu.startssl.chained.crt;
+    ssl_certificate_key ssl/coloc7.eu.key;
+
+    return 301 https://coloc7.eu$request_uri;
+}
+
+server {
+    listen 443 ssl;
     server_name coloc7.eu;
+
+    ssl_certificate     ssl/coloc7.eu.startssl.chained.crt;
+    ssl_certificate_key ssl/coloc7.eu.key;
+
     access_log  /var/log/nginx/coloc7.log;
     error_log  /var/log/nginx/coloc7.err;
 
