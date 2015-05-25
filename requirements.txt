@@ -1,6 +1,7 @@
 Django
 django-bootstrap3
 django-braces
+gunicorn
 pybbm
 markdown
 Pillow

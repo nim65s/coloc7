@@ -15,7 +15,7 @@ from pathlib import Path
 PROJECT = "coloc7"
 PROJECT_VERBOSE = "Portail web de la Coloc7"
 MAIL_USER = "majo"
-SELF_MAIL = True
+SELF_MAIL = False
 ALLOWED_HOSTS = ["coloc7.eu"]
 ALLOWED_HOSTS.append("www.%s" % ALLOWED_HOSTS[0])
 
@@ -39,7 +39,7 @@ else:
 EMAIL_SUBJECT_PREFIX = ("[%s Dev] " if DEBUG or INTEGRATION else "[%s] ") % PROJECT_VERBOSE
 
 EMAIL_USE_SSL = True
-EMAIL_HOST = "mail.gandi.net"  # TODO "smtp.%s" % (ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr") ← ça c’est pour ovh…
+EMAIL_HOST = "smtp.%s" % (ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr")
 EMAIL_PORT = 465
 EMAIL_HOST_USER = "%s@%s" % (MAIL_USER, ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr")
 SERVER_EMAIL = "%s+%s@%s" % (MAIL_USER, PROJECT, ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr")
@@ -153,3 +153,5 @@ if 'pybb' in INSTALLED_APPS:
     TEMPLATE_CONTEXT_PROCESSORS.append('pybb.context_processors.processor')
     MIDDLEWARE_CLASSES.append('pybb.middleware.PybbMiddleware')
     PYBB_DEFAULT_TITLE = "Forum de la Coloc7"
+
+LOGIN_REDIRECT_URL = '/'

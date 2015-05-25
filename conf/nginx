@@ -1,0 +1,23 @@
+server {
+    listen 80;
+    server_name coloc7.eu;
+    access_log  /var/log/nginx/coloc7.log;
+    error_log  /var/log/nginx/coloc7.err;
+
+    location /static/ {
+        autoindex on;
+        alias /var/www/coloc7/static_dest/;
+    }
+
+    location /media/ {
+        autoindex on;
+        alias /var/www/coloc7/media/;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8001;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
