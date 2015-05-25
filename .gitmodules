@@ -1,3 +1,5 @@
 [submodule "django-comptes"]
 	path = comptes
 	url = git@github.com:nim65s/django-comptes.git
+[submodule "comptes"]
+	branch = coloc
