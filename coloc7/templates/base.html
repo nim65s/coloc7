@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+{% load staticfiles %}<!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
         <title>{% block title %}Coloc7{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="http://static.pybbm.org/static/pinax/css/theme.css" rel="stylesheet">
-        <link href="http://static.pybbm.org/static/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="http://static.pybbm.org/static/font-awesome/css/font-awesome.css" rel="stylesheet">
-        <link href="http://static.pybbm.org/static/style.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link href="{% static 'pybb/theme.css' %}" rel="stylesheet">
+        <link href="{% static 'pybb/font-awesome.css' %}" rel="stylesheet">
+        <link href="{% static 'pybb/style.css' %}" rel="stylesheet" type="text/css">
     </head>
     <body>
         {% block maincontent %}
@@ -16,5 +16,7 @@
         <a href="/comptes">Comptes</a>
         {% endblock %}
         {% endblock %}
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </body>
 </html>
