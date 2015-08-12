@@ -10,7 +10,6 @@ pep8-naming
 pip-tools
 psycopg2
 pytz
-pybbm
 markdown
 Pillow
 raven

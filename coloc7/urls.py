@@ -8,6 +8,5 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^comptes/', include('comptes.urls', namespace='comptes')),
     url(r'^lcl/', include('lcl.urls', namespace='lcl')),
-    url(r'^forum/', include('pybb.urls', namespace='pybb')),
     url(r'^admin/', include(admin.site.urls)),
 )

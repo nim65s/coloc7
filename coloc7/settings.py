@@ -62,7 +62,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
-    'pybb',
     'bootstrap3',
     'sorl.thumbnail',
     'comptes',
@@ -147,11 +146,5 @@ if (Path(BASE_DIR) / PROJECT / 'context_processors.py').is_file():
 if not DEBUG:
     INSTALLED_APPS.append('raven.contrib.django.raven_compat')
     RAVEN_CONFIG = {"dsn": (CONF_DIR / "raven").open().read().strip()}
-
-if 'pybb' in INSTALLED_APPS:
-    PYBB_MARKUP = 'markdown'
-    TEMPLATE_CONTEXT_PROCESSORS.append('pybb.context_processors.processor')
-    MIDDLEWARE_CLASSES.append('pybb.middleware.PybbMiddleware')
-    PYBB_DEFAULT_TITLE = "Forum de la Coloc7"
 
 LOGIN_REDIRECT_URL = '/'
