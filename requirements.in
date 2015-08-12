@@ -5,13 +5,13 @@ flake8
 gunicorn
 IPython
 isort
+markdown
 pathlib
 pep8-naming
+Pillow
 pip-tools
 psycopg2
-pytz
-markdown
-Pillow
-raven
 python3-memcached
+pytz
+raven
 sorl-thumbnail
