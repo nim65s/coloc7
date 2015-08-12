@@ -32,14 +32,20 @@
                         </li>
                         <li><a href="{% url "comptes:home" %}">Comptes</a></li>
                     </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url "logout" %}?next=/">Log Out</a></li>
+                        {% else %}
+                            <li><a href="{% url "login" %}">Log In</a></li>
+                        {% endif %}
+                    </ul>
                 </div>
             </div>
         </nav>
 
         {% block maincontent %}
         {% block content %}
-        <a href="/lcl">LCL</a>
-        <a href="/comptes">Comptes</a>
+        <h1>Nothing to do here</h1>
         {% endblock %}
         {% endblock %}
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
