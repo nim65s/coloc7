@@ -2,3 +2,6 @@
 	path = comptes
 	url = git@github.com:nim65s/django-comptes.git
 	branch = master
+[submodule "lcl"]
+	path = lcl
+	url = git@bitbucket.org:coloc7/lcl.git

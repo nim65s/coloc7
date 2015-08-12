@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 from os.path import dirname, join
-
 from pathlib import Path
 
 PROJECT = "coloc7"
@@ -67,6 +66,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'sorl.thumbnail',
     'comptes',
+    'lcl',
 ]
 
 MIDDLEWARE_CLASSES = [
