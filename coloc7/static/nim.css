@@ -1,0 +1,2 @@
+.right, .euro { text-align: right; }
+.euro:after { content: ' €'; }
