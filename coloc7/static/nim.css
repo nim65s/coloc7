@@ -1,2 +1,3 @@
 .right, .euro { text-align: right; }
 .euro:after { content: ' €'; }
+body { padding-top: 70px; }

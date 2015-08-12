@@ -8,6 +8,34 @@
         <link rel="stylesheet" href="{% static 'nim.css' %}">
     </head>
     <body>
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" title="Coloc7" class="navbar-brand" id="brand" rel="home">Coloc7</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LCL <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url "lcl:home" %}">Opérations</a></li>
+                                <li><a href="{% url "lcl:soldes" %}">Soldes</a></li>
+                                <li><a href="{% url "lcl:checks" %}">Checks</a></li>
+                                <li><a href="{% url "lcl:colocs" %}">Colocs</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url "comptes:home" %}">Comptes</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
         {% block maincontent %}
         {% block content %}
         <a href="/lcl">LCL</a>
