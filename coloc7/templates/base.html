@@ -39,6 +39,7 @@
                             <li><a href="{% url "logout" %}?next=/">Log Out</a></li>
                         {% else %}
                             <li><a href="{% url "login" %}">Log In</a></li>
+                            <li><a href="{% url "password_reset" %}">Mot de passe oublié</a></li>
                         {% endif %}
                     </ul>
                 </div>
