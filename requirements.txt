@@ -8,29 +8,30 @@ click==5.1                # via pip-tools
 decorator==4.0.4          # via ipython, traitlets
 django-bootstrap3==6.2.2
 django-braces==1.8.1
-django==1.8.4
+django==1.8.5
 first==2.0.1              # via pip-tools
-flake8==2.4.1
+flake8==2.5.0
 gunicorn==19.3.0
 ipython-genutils==0.1.0   # via traitlets
 ipython==4.0.0
 isort==4.2.2
-markdown==2.6.2
+markdown==2.6.3
 mccabe==0.3.1             # via flake8
-path.py==8.1.1            # via pickleshare
+path.py==8.1.2            # via pickleshare
 pathlib==1.0.1
 pep8-naming==0.3.3
 pep8==1.5.7               # via flake8
-pexpect==3.3              # via ipython
+pexpect==4.0.1            # via ipython
 pickleshare==0.5          # via ipython
-pillow==2.9.0
-pip-tools==1.1.4
+pillow==3.0.0
+pip-tools==1.1.6
 psycopg2==2.6.1
-pyflakes==0.8.1           # via flake8
+ptyprocess==0.5           # via pexpect
+pyflakes==1.0.0           # via flake8
 python3-memcached==1.51
-pytz==2015.6
-raven==5.7.2
+pytz==2015.7
+raven==5.8.1
 simplegeneric==0.8.1      # via ipython
-six==1.9.0                # via django-braces, pip-tools
+six==1.10.0               # via django-braces, pip-tools
 sorl-thumbnail==12.3
 traitlets==4.0.0          # via ipython
