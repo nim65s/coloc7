@@ -4,18 +4,18 @@
 #
 #    pip-compile requirements.in
 #
-click==5.1                # via pip-tools
+click==6.2                # via pip-tools
 decorator==4.0.4          # via ipython, traitlets
 django-bootstrap3==6.2.2
 django-braces==1.8.1
-django==1.8.5
+django==1.9
 first==2.0.1              # via pip-tools
 flake8==2.5.0
-gunicorn==19.3.0
+gunicorn==19.4.1
 ipython-genutils==0.1.0   # via traitlets
-ipython==4.0.0
+ipython==4.0.1
 isort==4.2.2
-markdown==2.6.3
+markdown==2.6.5
 mccabe==0.3.1             # via flake8
 path.py==8.1.2            # via pickleshare
 pathlib==1.0.1
@@ -24,7 +24,7 @@ pep8==1.5.7               # via flake8
 pexpect==4.0.1            # via ipython
 pickleshare==0.5          # via ipython
 pillow==3.0.0
-pip-tools==1.1.6
+pip-tools==1.2.0
 psycopg2==2.6.1
 ptyprocess==0.5           # via pexpect
 pyflakes==1.0.0           # via flake8
