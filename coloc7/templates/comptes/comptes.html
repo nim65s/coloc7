@@ -2,7 +2,7 @@
 
 {% block title %}Comptes divers{% endblock %}
 
-{% block maincontent %}
+{% block content %}
 {% for occasion in occasions %}
 <h2>Dettes</h2>
 <a href="{% url 'comptes:dette' oc_slug=occasion.slug %}">En ajouter une</a>
