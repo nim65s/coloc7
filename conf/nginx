@@ -25,12 +25,10 @@ server {
     error_log  /var/log/nginx/coloc7.err;
 
     location /static/ {
-        autoindex on;
         alias /var/www/coloc7/static_dest/;
     }
 
     location /media/ {
-        autoindex on;
         alias /var/www/coloc7/media/;
     }
 
