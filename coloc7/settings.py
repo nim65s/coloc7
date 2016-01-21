@@ -46,9 +46,9 @@ DEFAULT_FROM_EMAIL = "%s <%s@%s>" % (PROJECT_VERBOSE, MAIL_USER, ALLOWED_HOSTS[0
 EMAIL_HOST_PASSWORD = (CONF_DIR / "email_password").open().read().strip()
 
 ADMINS = (
-        ("Guilhem Saurel", "guilhem+admin-%s@saurel.me" % PROJECT),
-        # TODO: on vous ajoute ici dès que tout tourne…
-        )
+    ("Guilhem Saurel", "guilhem+admin-%s@saurel.me" % PROJECT),
+    # TODO: on vous ajoute ici dès que tout tourne…
+)
 MANAGERS = ADMINS
 TEMPLATE_DEBUG = DEBUG
 
@@ -117,11 +117,11 @@ STATIC_URL = '/static/'
 STATIC_ROOT = join(BASE_DIR, 'static_dest') if DEBUG else '/var/www/%s/static_dest' % PROJECT
 
 CACHES = {
-        "default": {
-            "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
-            "LOCATION": "127.0.0.1:11211",
-            }
-        }
+    "default": {
+        "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+        "LOCATION": "127.0.0.1:11211",
+    }
+}
 
 LOGGING = {
     "version": 1,
