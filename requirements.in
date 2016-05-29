@@ -1,18 +1,12 @@
 Django
 django-bootstrap3
 django-braces
-flake8
-gunicorn
-IPython
-isort
-markdown
 pathlib
-pep8-naming
 Pillow
-pip-tools
 psycopg2
 python3-memcached
 pytz
 raven
 sorl-thumbnail
 -e git://github.com/Nim65s/django-comptes.git#egg=comptes
+-e git://github.com/Nim65s/django-YummyEmailOrUsernameInsensitiveAuth.git#egg=django-yeouia

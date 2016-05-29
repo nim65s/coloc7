@@ -148,3 +148,4 @@ if not DEBUG:
     RAVEN_CONFIG = {"dsn": (CONF_DIR / "raven").open().read().strip()}
 
 LOGIN_REDIRECT_URL = '/'
+AUTHENTICATION_BACKENDS = ['yeouia.backends.YummyEmailOrUsernameInsensitiveAuth']
