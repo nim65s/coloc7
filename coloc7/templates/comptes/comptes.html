@@ -17,7 +17,7 @@
       <tr><th>Total</th><th class="euro">{{ occasion.depenses }}</th></tr>
 </table>
 <h2>Remboursements</h2>
-<a href="{% url 'comptes:remboursement' oc_slug=occasion.slug %}">En ajouter une</a>
+<a href="{% url 'comptes:remboursement' oc_slug=occasion.slug %}">En ajouter un</a>
 <table class="table table-striped"><tr><th>Créditeur</th><th>Crédité</th><th class="right">Montant</th><th class="right">Moment</th></tr>
   {% for remboursement in occasion.remboursement_set.all %}<tr>
     <td>{{ remboursement.crediteur }}</td>
