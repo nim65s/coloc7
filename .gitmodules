@@ -1,3 +1,0 @@
-[submodule "lcl"]
-	path = lcl
-    url = git@github.com:nim65s/django-lcl.git

@@ -1,36 +1,36 @@
 server {
     listen 80;
-    server_name coloc7.eu www.coloc7.eu;
-    return 301 https://coloc7.eu$request_uri;
+    server_name nl.coloc7.eu www.nl.coloc7.eu;
+    return 301 https://nl.coloc7.eu$request_uri;
 }
 
 server {
     listen 443 ssl;
-    server_name www.coloc7.eu;
+    server_name www.nl.coloc7.eu;
 
-    ssl_certificate     /etc/letsencrypt/live/coloc7.eu/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/coloc7.eu/privkey.pem;
+    ssl_certificate     /etc/letsencrypt/live/nl.coloc7.eu/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/nl.coloc7.eu/privkey.pem;
 
-    return 301 https://coloc7.eu$request_uri;
+    return 301 https://nl.coloc7.eu$request_uri;
 }
 
 server {
     listen 443 ssl;
-    server_name coloc7.eu;
+    server_name nl.coloc7.eu;
 
-    ssl_certificate     /etc/letsencrypt/live/coloc7.eu/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/coloc7.eu/privkey.pem;
+    ssl_certificate     /etc/letsencrypt/live/nl.coloc7.eu/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/nl.coloc7.eu/privkey.pem;
 
-    access_log  /var/log/nginx/coloc7.log;
-    error_log  /var/log/nginx/coloc7.err;
+    access_log  /var/log/nginx/nl.coloc7.log;
+    error_log  /var/log/nginx/nl.coloc7.err;
 
     location /static/ {
-        alias /var/www/coloc7/static_dest/;
+        alias /var/www/nlcoloc7/static_dest/;
         expires 30d;
     }
 
     location /media/ {
-        alias /var/www/coloc7/media/;
+        alias /var/www/nlcoloc7/media/;
         expires 30d;
     }
 
@@ -39,7 +39,7 @@ server {
     }
 
     location / {
-        proxy_pass http://127.0.0.1:8001;
+        proxy_pass http://127.0.0.1:8007;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;

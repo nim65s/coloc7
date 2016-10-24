@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <title>{% block title %}Coloc7{% endblock %}</title>
+    <title>{% block title %}Coloc7 - NL{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'nim.css' %}">
@@ -18,25 +18,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="/" title="Coloc7" class="navbar-brand" id="brand" rel="home">Coloc7</a>
+          <a href="/" title="Coloc7" class="navbar-brand" id="brand" rel="home">Coloc7 - NL</a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav navbar-left">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LCL <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="{% url "lcl:colocs" %}">Colocs</a></li>
-                <li><a href="{% url "lcl:releves" %}">Releves</a></li>
-                <li><a href="{% url "lcl:operations" %}">Opérations</a></li>
-                <li><a href="{% url "lcl:soldes" %}">Soldes</a></li>
-                <li><a href="{% url "lcl:checks" %}">Checks</a></li>
-              </ul>
-            </li>
             <li><a href="{% url "comptes:home" %}">Dettes & Remboursements</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-            <li><a href="/admin">Admin</a></li>
+            <li><a href="/admin/">Admin</a></li>
             <li><a href="{% url "logout" %}?next=/">Log Out</a></li>
             {% else %}
             <li><a href="{% url "login" %}">Log In</a></li>

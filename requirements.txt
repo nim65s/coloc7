@@ -4,7 +4,6 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-
 -e git+git://github.com/Nim65s/django-comptes.git#egg=django-comptes
 -e git+git://github.com/Nim65s/django-YummyEmailOrUsernameInsensitiveAuth.git#egg=django-yeouia
 contextlib2==0.5.3        # via raven

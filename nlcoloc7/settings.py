@@ -11,11 +11,11 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 from os.path import dirname, join
 from pathlib import Path
 
-PROJECT = "coloc7"
-PROJECT_VERBOSE = "Portail web de la Coloc7"
+PROJECT = "nlcoloc7"
+PROJECT_VERBOSE = "Portail web de la Coloc7 - nl version"
 MAIL_USER = "majo"
 SELF_MAIL = False
-ALLOWED_HOSTS = ["coloc7.eu"]
+ALLOWED_HOSTS = ["nl.coloc7.eu"]
 ALLOWED_HOSTS.append("www.%s" % ALLOWED_HOSTS[0])
 
 BASE_DIR = dirname(dirname(__file__))
@@ -65,7 +65,6 @@ INSTALLED_APPS = [
     'bootstrap3',
     'sorl.thumbnail',
     'comptes',
-    'lcl',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -143,9 +142,9 @@ LOGGING = {
 if (Path(BASE_DIR) / PROJECT / 'context_processors.py').is_file():
     TEMPLATE_CONTEXT_PROCESSORS.append('%s.context_processors.%s' % (PROJECT, PROJECT))
 
-if not DEBUG:
-    INSTALLED_APPS.append('raven.contrib.django.raven_compat')
-    RAVEN_CONFIG = {"dsn": (CONF_DIR / "raven").open().read().strip()}
+# if not DEBUG:
+    # INSTALLED_APPS.append('raven.contrib.django.raven_compat')
+    # RAVEN_CONFIG = {"dsn": (CONF_DIR / "raven").open().read().strip()}
 
 LOGIN_REDIRECT_URL = '/'
 AUTHENTICATION_BACKENDS = ['yeouia.backends.YummyEmailOrUsernameInsensitiveAuth']
