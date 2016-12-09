@@ -4,18 +4,16 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-
 -e git+git://github.com/Nim65s/django-comptes.git#egg=django-comptes
 -e git+git://github.com/Nim65s/django-YummyEmailOrUsernameInsensitiveAuth.git#egg=django-yeouia
-contextlib2==0.5.3        # via raven
-django-bootstrap3==7.0.1
-django-braces==1.8.1
-Django==1.9.6
+contextlib2==0.5.4        # via raven
+django-bootstrap3==7.1.0
+django-braces==1.10.0
+Django==1.10.4
 pathlib==1.0.1
-Pillow==3.2.0
-psycopg2==2.6.1
+Pillow==3.4.2
+psycopg2==2.6.2
 python3-memcached==1.51
-pytz==2016.4
-raven==5.19.0
-six==1.10.0               # via django-braces
+pytz==2016.10
+raven==5.32.0
 sorl-thumbnail==12.3
