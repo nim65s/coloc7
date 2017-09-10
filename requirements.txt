@@ -7,13 +7,13 @@
 -e git+git://github.com/Nim65s/django-comptes.git#egg=django-comptes
 -e git+git://github.com/Nim65s/django-YummyEmailOrUsernameInsensitiveAuth.git#egg=django-yeouia
 contextlib2==0.5.5        # via raven
-django-bootstrap3==8.2.3
+django-bootstrap3==9.0.0
 django-braces==1.11.0
-django==1.11.3
+django==1.11.5
 olefile==0.44             # via pillow
 pathlib==1.0.1
 pillow==4.2.1
-psycopg2==2.7.1
+psycopg2==2.7.3.1
 python3-memcached==1.51
 pytz==2017.2
 raven==6.1.0
