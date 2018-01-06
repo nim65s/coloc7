@@ -1,9 +1,9 @@
-from django.conf.urls import include, url
 from django.contrib import admin
+from django.urls import include, path
 
 urlpatterns = [
-    url(r'^accounts/', include('django.contrib.auth.urls')),
-    url(r'^comptes/', include('comptes.urls')),
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'', include('lcl.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('comptes/', include('comptes.urls')),
+    path('admin/', admin.site.urls),
+    path('', include('lcl.urls')),
 ]
