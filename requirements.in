@@ -10,3 +10,5 @@ raven
 sorl-thumbnail
 -e git://github.com/Nim65s/django-comptes.git#egg=django-comptes
 -e git://github.com/Nim65s/django-YummyEmailOrUsernameInsensitiveAuth.git#egg=django-yeouia
+-e git://github.com/nim65s/ndh.git#egg=ndh
+-e git://github.com/nim65s/django-autoslug.git#egg=django-autoslug

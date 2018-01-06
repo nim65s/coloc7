@@ -4,17 +4,17 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
+-e git+git://github.com/nim65s/django-autoslug.git#egg=django-autoslug
 -e git+git://github.com/Nim65s/django-comptes.git#egg=django-comptes
 -e git+git://github.com/Nim65s/django-YummyEmailOrUsernameInsensitiveAuth.git#egg=django-yeouia
-contextlib2==0.5.3        # via raven
-django-bootstrap3==7.0.1
-django-braces==1.8.1
-Django==1.9.6
+-e git+git://github.com/nim65s/ndh.git#egg=ndh
+django-bootstrap3==9.1.0
+django-braces==1.12.0
+django==2.0.1
 pathlib==1.0.1
-Pillow==3.2.0
-psycopg2==2.6.1
+pillow==5.0.0
+psycopg2==2.7.3.2
 python3-memcached==1.51
-pytz==2016.4
-raven==5.19.0
-six==1.10.0               # via django-braces
-sorl-thumbnail==12.3
+pytz==2017.3
+raven==6.4.0
+sorl-thumbnail==12.4.1
